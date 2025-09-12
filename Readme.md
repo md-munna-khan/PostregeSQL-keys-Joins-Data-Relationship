@@ -9,3 +9,35 @@ This module dives into the fundamentals of relational database connections using
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+
+## 47-2 Adding Foreign Key Constraint
+```sql
+-- user table
+create table users (
+  id serial primary key,
+  username varchar(25) not null
+);
+
+
+
+-- post table
+
+create table posts (
+  id serial primary key,
+  title text not null,
+  user_id int references "users"(id)
+);
+
+
+insert into users (username) values
+('akash'),
+('batash'),
+('meghna'),
+('jamuna')
+
+insert into posts (title,user_id) values
+('Enjoyin a sunny day  with akash',2),
+('Batahs is the charing',1),
+('Exploring adventure with sagor',4),
+('you travelling in jamuna',4)
+```
