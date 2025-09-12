@@ -41,3 +41,37 @@ insert into posts (title,user_id) values
 ('Exploring adventure with sagor',4),
 ('you travelling in jamuna',4)
 ```
+
+## 47-3 Understanding Inner Join
+```sql
+select * from post
+ join users on users.id = post.user_id;
+```
+
+- ambiguous error of same id
+
+```sql 
+select id,title,username from post
+ join users on users.id = post.user_id;
+```
+
+- to avoid this error we have to pass context 
+
+```sql 
+select post.id,title,username from post
+ join users on users.id = post.user_id;
+```
+
+```sql 
+select p.id, title,username from post as p
+ join users as u on  p.user_id = u.id;
+```
+
+- this join ais called inner join as well 
+
+```sql 
+select p.id, title,username from post as p
+inner join users as u on  p.user_id = u.id;
+```
+
+![alt text](image-3.png)
