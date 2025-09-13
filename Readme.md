@@ -184,3 +184,24 @@ inner join departments as d on e.department_id = d.department_id;
 select * from employees 
 inner join departments using (department_id)
 ```
+
+
+## 47-8 SQL Practice – Part 2
+
+```sql
+
+
+-- 2 show Department Name with Average slary
+select department_name,round(avg (salary)) from employees 
+inner join departments using (department_id)
+group by department_name
+  
+-- 3 count Employees in Each Department
+select department_name,count(*) from employees 
+inner join departments using (department_id)
+group by department_name
+-- find the department name with the highest Average salary
+select department_name,round(avg (salary)) as avg_salary from employees 
+inner join departments using (department_id)
+group by department_name order by avg_salary desc  limit 1
+```
