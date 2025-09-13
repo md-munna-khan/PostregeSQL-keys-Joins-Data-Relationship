@@ -116,3 +116,71 @@ but if id not matched dont save it
 - and same column if repeat he is not saved
 - and must be added in the two table one common column otherwise he show error
 ![alt text](image-14.png)
+
+## 47-7 SQL Practice – Part 1
+![alt text](image-15.png)
+```sql
+-- practice part-1
+create table employees(
+  employee_id serial primary key,
+  employee_name varchar(50),
+  department_id int references departments(department_id),
+  salary decimal(10,2),
+  hire_date date
+);
+-- data insert in employees table
+INSERT INTO employees (employee_name, department_id, salary, hire_date) VALUES
+('Alice',      1, 55000.00, '2022-01-15'),
+('Bob',        2, 48000.00, '2021-03-20'),
+('Charlie',    3, 60000.00, '2020-07-10'),
+('David',      4, 45000.00, '2023-02-05'),
+('Emma',       5, 75000.00, '2022-11-30'),
+('Farhan',     6, 52000.00, '2019-05-14'),
+('Grace',      7, 47000.00, '2021-08-25'),
+('Hassan',     8, 68000.00, '2020-09-18'),
+('Isabella',   9, 43000.00, '2023-01-12'),
+('Jack',      10, 50000.00, '2022-06-22'),
+('Kamal',      1, 56000.00, '2021-12-03'),
+('Lina',       2, 47000.00, '2020-04-27'),
+('Mahin',      3, 65000.00, '2019-09-15'),
+('Nadia',      4, 46000.00, '2022-08-19'),
+('Omar',       5, 70000.00, '2021-03-11'),
+('Priya',      6, 52000.00, '2020-10-05'),
+('Quinn',      7, 48000.00, '2023-04-01'),
+('Rafi',       8, 69000.00, '2022-02-17'),
+('Sadia',      9, 44000.00, '2019-11-23'),
+('Tanvir',    10, 51000.00, '2021-07-29');
+
+-- createing the departments table
+create table departments(
+  department_id serial primary key,
+  department_name varchar(50)
+)
+
+  
+  
+-- 1 
+-- data insert in departments
+
+INSERT INTO departments (department_name) VALUES
+('Human Resources'),
+('Finance'),
+('Marketing'),
+('Sales'),
+('IT'),
+('Operations'),
+('Customer Support'),
+('Research and Development'),
+('Legal'),
+('Administration');
+
+
+---------------------- query---------------
+  -- 1 inner join to retrive employee and department data
+
+select * from employees as e
+inner join departments as d on e.department_id = d.department_id;
+-- shortcut policy
+select * from employees 
+inner join departments using (department_id)
+```
