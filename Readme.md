@@ -212,3 +212,42 @@ group by department_name order by avg_salary desc  limit 1
 select extract (year from hire_date) as hired_year,count(*) from employees
 group by hired_year
 ```
+
+## 47-10 Subquery Basics
+- this is a subquery
+![alt text](image-17.png)
+
+```sql
+-- sub query
+create table employees(
+  id serial primary key,
+  name varchar(50),
+  department varchar(50),
+  salary int
+)
+
+
+INSERT INTO employees (name, department, salary) VALUES
+('Alice',   'HR',        50000),
+('Bob',     'Finance',   60000),
+('Charlie', 'IT',        70000),
+('Dina',    'Marketing', 55000),
+('Evan',    'Sales',     65000);
+
+-- find the highest salary
+select max(salary) from employees
+
+
+-- find which employee gets the highest salary
+select * from employees
+where salary=(select max(salary)from employees)
+
+-- Find Employee Who earn more than the average salary
+
+select * from employees
+where salary > (select avg(salary)from employees)
+-- name of the employee who gets the highest salary in Hr Department
+
+select * from employees
+where salary = (select max(salary) from employees  where department = 'HR')
+```
