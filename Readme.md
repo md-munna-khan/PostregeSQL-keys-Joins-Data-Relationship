@@ -251,3 +251,25 @@ where salary > (select avg(salary)from employees)
 select * from employees
 where salary = (select max(salary) from employees  where department = 'HR')
 ```
+## 47-11 Functions Explained
+![alt text](image-18.png)
+```sql
+CREATE FUNCTION emp_count()
+RETURNS INTEGER
+LANGUAGE sql
+AS $$
+    SELECT COUNT(*) FROM employees;
+$$;
+
+select emp_count()
+
+-- delete id
+CREATE FUNCTION delete_emp_id(emp_id int)
+RETURNS void
+LANGUAGE sql
+AS $$
+   delete from employees where id = emp_id
+$$;
+
+select delete_emp_id(5)
+```
