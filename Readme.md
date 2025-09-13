@@ -103,3 +103,16 @@ insert into posts (id,title) values
 - full join he fill up all row if any row have no data he fill up in the null value but he put it all row table
 ![alt text](image-9.png)
 ![alt text](image-10.png)
+##  47-6 All Joins Overview (Cross & Natural too)
+![alt text](image-11.png)
+- is there cross join 
+first table first row cross in second table first row
+and again first table second row crossed in the second table first row same to same second row in the first table
+![alt text](image-12.png)
+### natural join
+![alt text](image-13.png)
+- who is id he matched he save  it
+but if id not matched dont save it
+- and same column if repeat he is not saved
+- and must be added in the two table one common column otherwise he show error
+![alt text](image-14.png)
