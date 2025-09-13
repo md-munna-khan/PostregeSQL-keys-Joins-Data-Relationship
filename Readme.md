@@ -86,12 +86,12 @@ inner join users as u on  p.user_id = u.id;
 select  p.id, title , username from posts as p
 join users as u on p.user_id = u.id
 
-
-  select * from users as u
-inner join posts as p on p.user_id = u.id
+select  p.id, title , username from posts as p
+join users as u on p.user_id = u.id
 
 
   
 insert into posts (id,title) values
 (5,'Enjoyin a sunny day  with akash');
 ```
+![alt text](image-6.png)
