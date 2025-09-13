@@ -75,3 +75,23 @@ inner join users as u on  p.user_id = u.id;
 ```
 
 ![alt text](image-3.png)
+
+## 47-4 Left Join Made Easy
+- type alias for shortcut
+- in the inner join when user_id is null data not showing in output
+- in the left join showing all data if user information is null data show as null
+![alt text](image-4.png)
+![alt text](image-5.png)
+```sql
+select  p.id, title , username from posts as p
+join users as u on p.user_id = u.id
+
+
+  select * from users as u
+inner join posts as p on p.user_id = u.id
+
+
+  
+insert into posts (id,title) values
+(5,'Enjoyin a sunny day  with akash');
+```
