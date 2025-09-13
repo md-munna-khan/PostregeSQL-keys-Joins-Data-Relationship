@@ -95,3 +95,11 @@ insert into posts (id,title) values
 (5,'Enjoyin a sunny day  with akash');
 ```
 ![alt text](image-6.png)
+## 47-5 Right & Full Join
+
+- right join its mean second table priority if user not any post showing his id and first table data showing null 
+![alt text](image-7.png)
+![alt text](image-8.png)
+- full join he fill up all row if any row have no data he fill up in the null value but he put it all row table
+![alt text](image-9.png)
+![alt text](image-10.png)
