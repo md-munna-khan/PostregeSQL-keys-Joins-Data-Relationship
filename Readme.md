@@ -205,3 +205,10 @@ select department_name,round(avg (salary)) as avg_salary from employees
 inner join departments using (department_id)
 group by department_name order by avg_salary desc  limit 1
 ```
+## 47-9 SQL Practice – Part 3
+![alt text](image-16.png)
+```sql
+-- 5 count Employees hired Each Year
+select extract (year from hire_date) as hired_year,count(*) from employees
+group by hired_year
+```
