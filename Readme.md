@@ -443,5 +443,9 @@ SELECT * FROM users;
 
 EXPLAIN ANALYSE -- this will how the query is executed and show how much time is taken.
 SELECT * from users WHERE last_name = 'Moore';
+EXPLAIN ANALYSE -- this will how the query is executed and show how much time is taken.
+SELECT * from employees WHERE last_name = 'Moore';
 
+CREATE INDEX idx_employees_last_name
+ON employees (last_name);
 ```
