@@ -355,3 +355,43 @@ call increase_low_salary('HR')
 INSERT INTO employees (name, department, salary)
 VALUES ('Haris', 'HR', 40000);
 ```
+## 47-14 Trigger Example & 47-15 Writing Triggers
+```sql
+
+CREATE  function delete_emp_id(p_id int)
+RETURNS void
+LANGUAGE SQL
+AS
+$$
+DELETE FROM employees WHERE employee_id =p_id;
+$$
+
+
+
+create table employee_logs(
+  id serial primary key,
+  emp_name varchar(50),
+  action varchar(25),
+  action_time timestamp default now()
+)
+
+create trigger save_employee_delete_logs
+after delete on employees
+for each row
+execute function log_employee_deletion()
+
+
+create function log_employee_deletion()
+returns trigger
+language plpgsql
+as
+$$
+begin
+  insert into employee_logs (emp_name,action) values(old.name,'delete');
+return old;
+  end;
+$$
+
+select delete_emp_id(6)
+
+```
