@@ -273,3 +273,85 @@ $$;
 
 select delete_emp_id(5)
 ```
+## 47-12 Procedure Example 1 and 2 
+```sql
+SELECT count(*) FROM employees
+
+CREATE Function emp_count()
+RETURNS INT
+LANGUAGE sql -- here can be plpgsql/plperl/PL/Python or etc for PROCEDURAL
+AS
+$$
+-- here will be the function body
+SELECT count(*) FROM employees
+$$
+
+SELECT emp_count();
+
+
+
+
+CREATE or REPLACE function delete_emp()
+RETURNS void
+LANGUAGE SQL
+AS
+$$
+DELETE FROM employees WHERE employee_id = 30;
+$$
+
+SELECT delete_emp();
+
+
+CREATE OR replace FUNCTION delete_emp_by_id(p_emp_id INT)
+RETURNS void
+LANGUAGE SQL
+AS
+$$
+DELETE FROM employees WHERE employee_id = p_emp_id;
+$$
+
+SELECT delete_emp_by_id(29);
+
+
+
+
+
+CREATE PROCEDURE remove_emp()
+LANGUAGE plpgsql
+AS
+$$
+BEGIN
+-- here we can write multiple sql queries or one single queries
+-- here will exist the works/action that we want to do using procedure.
+DELETE FROM employees WHERE employee_id = 28;
+END
+$$
+
+CALL remove_emp()
+
+
+CREATE PROCEDURE increase_low_salary(department_name VARCHAR(50))
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    avg_salary NUMERIC;
+BEGIN
+
+    SELECT AVG(salary)
+      INTO avg_salary
+      FROM employees
+     WHERE department = department_name;
+
+    UPDATE employees
+       SET salary = salary * 1.10
+     WHERE department = department_name
+       AND salary < avg_salary;
+END;
+$$;
+SELECT avg(salary) FROM employees
+
+call increase_low_salary('HR')
+  
+INSERT INTO employees (name, department, salary)
+VALUES ('Haris', 'HR', 40000);
+```
